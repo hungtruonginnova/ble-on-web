@@ -1,0 +1,13 @@
+{
+  "name": "ble-web-driver",
+  "version": "0.1.0",
+  "peerDependencies": {
+    "@angular/common": "^15.0.0",
+    "@angular/core": "^15.0.0",
+    "ble-tool": "*",
+    "rxjs": "^7.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.1"
+  }
+}
