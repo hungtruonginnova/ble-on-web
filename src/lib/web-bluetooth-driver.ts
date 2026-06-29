@@ -352,13 +352,11 @@ export class WebBluetoothDriver extends Bluetooth {
   // ─── State ────────────────────────────────────────────────────────────────
 
   async isEnabled(): Promise<void> {
-    const bt = getNavigatorBluetooth();
-    if (!bt) {
+    // navigator.bluetooth existing is enough to proceed; actual BT-off
+    // state is surfaced later by the browser when requestDevice() is called.
+    // getAvailability() is unreliable on macOS Chrome and should not gate navigation.
+    if (!getNavigatorBluetooth()) {
       throw new Error('Web Bluetooth API not available');
-    }
-    const available = await bt.getAvailability();
-    if (!available) {
-      throw new Error('Bluetooth is not available');
     }
   }
 
